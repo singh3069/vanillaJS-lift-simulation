@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+}
+
+.heading {
+    top: 0;
+    position: fixed;
+    color: orange;
+    z-index: 1;
+}
+
+.floorSection {
+    /* display: flex; */
+    width: 60%;
+    height: 80vh;
+    margin: 30px auto;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.floors {
+    width: 100%;
+    height: 160px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    background: orange;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: relative;
+}
+
+.floorName {
+    left: 44%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.link {
+    position: absolute;
+}
+
+.buttonsDiv {
+    display: flex;
+    flex-direction: column;
+    width: 7%;
+}
+
+.bttn {
+    cursor: pointer;
+    height: 25px;
+    border-radius: 3px;
+}
+
+/* .liftDiv {
+  width: 100%;
+  margin: 10px auto;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: brown;
+} */
+
+.lift {
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    height: 82px;
+    width: 66px;
+    position: absolute;
+    left: 16%;
+    background-color: white;
+    /* transition-duration: 1s; */
+    transition-timing-function: linear;
+    /* bottom: -25px; */
+}
+
+.lift_2 {
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    height: 82px;
+    width: 61px;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    position: absolute;
+    right: 5%;
+}
+
+.lift_3 {
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    height: 82px;
+    width: 61px;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    position: absolute;
+    right: 20%;
+}
+
+.liftLeftDoor,
+.liftRightDoor {
+    height: 100%;
+    /* width: 50%; */
+    background: grey;
+
+}
+
+.liftRightDoor {
+    border-left: 2px solid black;
+}
+
+.liftLeftDoor {
+    border-right: 2px solid black;
+}
+
+.inputDiv {
+    height: auto;
+    width: -1px;
+    width: 16%;
+    position: fixed;
+    top: 0;
+    left: 41%;
+    z-index: 1;
+}
+
+.inputDiv button {
+    width: 30%;
+    cursor: pointer;
+}
+
+/*----------------------------------------- Media Querry -----------------------------------------  */
+
+@media (max-width: 1400px) {
+    /* .floors {
+    background-color: red;
+  } */
+
+    .room {
+        height: 100px;
+        width: 100px;
+    }
+
+    .lift {
+        left: 14%;
+    }
+
+    .inputDiv {
+        display: flex;
+        width: 26%;
+    }
+}
+
+@media (max-width: 1111px) {
+    .lift {
+        left: 14%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .room {
+        height: 87px;
+        width: 87px;
+    }
+
+    /* .lift {
+    left: 15%;
+  } */
+}
+
+@media (max-width: 1000px) {
+    .room {
+        height: 70px;
+        width: 70px;
+    }
+
+    .lift {
+        height: 62px;
+        width: 41px;
+        left: 17%;
+    }
+
+    .balcony {
+        height: 22px;
+    }
+}
+
+@media (max-width: 860px) {
+    .lift {
+        left: 15%;
+    }
+}
+
+@media (max-width: 800px) {
+    .room {
+        height: 60px;
+        width: 60px;
+    }
+
+    .bttn {
+        width: 38px;
+    }
+
+    .lift {
+        left: 16%;
+    }
+}
+
+@media (max-width: 755px) {
+    .room {
+        width: 55px;
+    }
+}
+
+@media (max-width: 705px) {
+    .lift {
+        height: 44px;
+        width: 36px;
+        left: 16%;
+    }
+}
+
+@media (max-width: 677px) {
+    .room {
+        height: 50px;
+        width: 45px;
+    }
+
+    .lift {
+        left: 17.5%;
+    }
+
+    .bttn {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    .room {
+        height: 50px;
+        width: 45px;
+    }
+
+    .lift {
+        height: 38px;
+        width: 25px;
+        left: 16%;
+    }
+
+    .bttn {
+        font-size: 7px;
+        font-weight: 700;
+        width: 25px;
+    }
+
+    .inputDiv {
+        left: 34%;
+    }
+}
+
+@media (max-width: 370px) {
+    .room {
+        height: 36px;
+        width: 30px;
+    }
+
+    .balcony {
+        height: 10px;
+    }
+
+    .lift {
+        height: 36px;
+        width: 14px;
+        left: 16%;
+    }
+
+    .bttn {
+        width: 21px;
+    }
+
+    .inputDiv {
+        width: 40%;
+        left: 22%;
+    }
+
+    .heading {
+        font-size: 11px;
+        font-weight: 700;
+    }
+}
+
+/* .inputDiv {
+    width: 20%;
+  } */
