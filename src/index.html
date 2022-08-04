@@ -5,72 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Document</title>
+    <title>Lift Simulation</title>
   </head>
-  
 
   <body>
-    <h1>Lift Simulation</h1>
-    <div>
-      <h2 class="heading">Lift Simulation</h2>
-      <h3 class="link">
-        <a href="https://github.com/singh3069/Iift_simulation">Code</a>
-      </h3>
-      <section class="floorSection">
-        
-          <div key={item.id} class="floor4 floors">
-            
-              <div class="buttonsDiv">
-                <button
-                  class="bttn"
-                  id={item.id}
-                  
-                >
-                  Down
-                </button>
-              </div>
-            
-              
+    <section class="main_sec">
+      <div class="heading">
+        <h2 class="">Lift Simulation</h2>
+        <h3 class="link">
+          <a href="#">Code</a>
+        </h3>
+      </div>
+      <section class="sidebar_and_content">
+        <div class="sidebar">
+          <div class="inputDiv">
+            <div>
+              <input
+                type="number"
+                id="input"
+                min="1"
+                max="15"
+                placeholder="Enter a number to Generate Floors"
+              />
+              <button id="generate">Generate floors</button>
+            </div>
+            <div>
+              <input
+                type="number"
+                id="input"
+                min="1"
+                max="3"
+                placeholder="Enter a number to Generate lifts"
+              />
+              <button id="generate">Generate lifts</button>
+            </div>
+          </div>
+        </div>
+        <div class="floorSection">
+          <div class="floor4 floors">
+            <div class="buttonsDiv">
+              <button class="bttn">Down</button>
+              <button class="bttn">UP</button>
+            </div>
+
             <h3 class="floorName">floor</h3>
           </div>
-        
 
+          <div class="floors">
+            <div class="buttonsDiv">
+              <button class="bttn">UP</button>
+            </div>
 
-        <div class="floors ">
-          <div class="buttonsDiv">
-            <button
-              class="bttn"
-              id="0"
-            >
-              UP
-            </button>
+            <div class="lift">
+              <div class="liftLeftDoor"></div>
+              <div class="liftRightDoor"></div>
+            </div>
+            <div class="lift_2">
+              <div class="liftLeftDoor"></div>
+              <div class="liftRightDoor"></div>
+            </div>
+            <div class="lift_3">
+              <div class="liftLeftDoor"></div>
+              <div class="liftRightDoor"></div>
+            </div>
+            <h3 class="floorName">Ground-Floor</h3>
           </div>
-
-          <div class="lift">
-            <div
-              class="liftLeftDoor"
-              
-            ></div>
-            <div
-              class="liftRightDoor"
-             
-            ></div>
-          </div>
-           <div
-            class="lift_2"
-           
-          >
-            <div class="liftLeftDoor"></div>
-            <div class="liftRightDoor"></div>
-          </div>
-          <div
-            class="lift_3"
-          >
-            <div class="liftLeftDoor"></div>
-            <div class="liftRightDoor"></div>
-          </div> 
-          <h3 class="floorName">Ground-Floor</h3>
         </div>
       </section>
+    </section>
   </body>
 </html>
