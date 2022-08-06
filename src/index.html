@@ -22,56 +22,86 @@
             <div>
               <input
                 type="number"
-                id="input"
+                id="floor_input"
                 min="1"
                 max="15"
+                class="input"
                 placeholder="Enter a number to Generate Floors"
               />
-              <button id="generate">Generate floors</button>
+              <button class="generate" id="generate_floor_bttn">
+                Generate floors
+              </button>
             </div>
             <div>
               <input
                 type="number"
-                id="input"
+                id="lift_input"
                 min="1"
                 max="3"
+                class="input"
                 placeholder="Enter a number to Generate lifts"
               />
-              <button id="generate">Generate lifts</button>
+              <button class="generate" id="generate_lift_bttn">
+                Generate lifts
+              </button>
             </div>
           </div>
         </div>
         <div class="floorSection">
           <div class="floor4 floors">
             <div class="buttonsDiv">
-              <button class="bttn">Down</button>
-              <button class="bttn">UP</button>
+              <button class="bttn" id="7">Down</button>
+              <button class="bttn" id="6">UP</button>
             </div>
 
-            <h3 class="floorName">floor</h3>
+            <h3 class="floorName">floor4</h3>
           </div>
-
-          <div class="floors">
+          <div class="floor4 floors">
             <div class="buttonsDiv">
-              <button class="bttn">UP</button>
+              <button class="bttn" id="5">Down</button>
+              <button class="bttn" id="4">UP</button>
+            </div>
+
+            <h3 class="floorName">floor3</h3>
+          </div>
+          <div class="floor4 floors">
+            <div class="buttonsDiv">
+              <button class="bttn" id="3">Down</button>
+              <button class="bttn" id="2">UP</button>
+            </div>
+
+            <h3 class="floorName">floor2</h3>
+          </div>
+          <div class="floor4 floors">
+            <div class="buttonsDiv">
+              <button class="bttn" id="3">Down</button>
+              <button class="bttn" id="2">UP</button>
+            </div>
+
+            <h3 class="floorName">floor1</h3>
+          </div>
+          <div class="ground_floor floors">
+            <div class="buttonsDiv">
+              <button class="bttn" id="1">UP</button>
             </div>
 
             <div class="lift">
               <div class="liftLeftDoor"></div>
               <div class="liftRightDoor"></div>
             </div>
-            <div class="lift_2">
+            <!-- <div class="lift_2">
               <div class="liftLeftDoor"></div>
               <div class="liftRightDoor"></div>
             </div>
             <div class="lift_3">
               <div class="liftLeftDoor"></div>
               <div class="liftRightDoor"></div>
-            </div>
+            </div> -->
             <h3 class="floorName">Ground-Floor</h3>
           </div>
         </div>
       </section>
     </section>
   </body>
+  <script src="./index.js"></script>
 </html>
