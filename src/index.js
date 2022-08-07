@@ -12,57 +12,60 @@ const currentFloor = "";
 //   transitionDuration: `${(currentFloor - prevFloorCount) * 2}s`,
 // };
 
-const building = document.createElement("floor_section");
-building.className = "floor_section";
+// const building = document.createElement("floor_section");
+// building.className = "floor_section";
 
-const floor = document.createElement("div");
-floor.className = "floor";
+// const floor = document.createElement("div");
+// floor.className = "floor";
 
-// const lift = document.createElement("div");
-// lift.className = "lift";
+// // const lift = document.createElement("div");
+// // lift.className = "lift";
 
-const lift_left_door = document.createElement("div");
-lift_left_door.className = "lift_left_door";
+// const lift_left_door = document.createElement("div");
+// lift_left_door.className = "lift_left_door";
 
-const lift_right_door = document.createElement("div");
-lift_right_door.className = "lift_right_door";
+// const lift_right_door = document.createElement("div");
+// lift_right_door.className = "lift_right_door";
 
-const upButton = document.createElement("button");
-upButton.className = "btn";
+// const upButton = document.createElement("button");
+// upButton.className = "btn";
 
-const downButton = document.createElement("button");
-downButton.className = "btn";
+// const downButton = document.createElement("button");
+// downButton.className = "btn";
 
 // lift.appendChild(lift_left_door, lift_right_door);
 
-generate_floor_button.addEventListener("click", () => {
-  if (floor_input.value === "") {
-    alert("Please enter a  number");
-  } else {
-    const numberOffloor = floor_input.value;
-    const floorArr = Array.from(
-      { length: numberOffloor },
-      (_, index) => index + 1
-    );
-    for (let i = 0; i < floorArr.length; i++) {
-      floor.appendChild(upButton, downButton);
-    }
-    building.appendChild(floor);
-    console.log(floorArr);
-    console.log(`generate floor button clicked with ${floor_input.value}`);
-  }
-});
+// generate_floor_button.addEventListener("click", () => {
+//   if (floor_input.value === "") {
+//     alert("Please enter a  number");
+//   } else {
+//     const numberOffloor = floor_input.value;
+//     const floorArr = Array.from(
+//       { length: numberOffloor },
+//       (_, index) => index + 1
+//     );
+//     for (let i = 0; i < floorArr.length; i++) {
+//       floor.appendChild(upButton, downButton);
+//     }
+//     building.appendChild(floor);
+//     console.log(floorArr);
+//     console.log(`generate floor button clicked with ${floor_input.value}`);
+//   }
+// });
 
-generate_lift_button.addEventListener("click", () => {
-  console.log("generate lift button clicked");
-});
+// generate_lift_button.addEventListener("click", () => {
+//   console.log("generate lift button clicked");
+// });
 
-for (var i = 0; i < buttons.length; i++) {
+for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
-    const currentButton = e.target.id;
+    const parentID = parseInt(e.target.parentElement.id);
+    // console.log(`button clicked with ID ${parentID}`);
+    // console.log(lift);
+    // lift.style.height = "100px";
+    lift[0].style.transform = `translateY(-${parentID * 174}px)`;
+    lift[0].style.transitionDuration = "2s";
 
-    console.log(`button clicked with ID ${currentButton}`);
-    lift.style.transform = `translateY(-${currentButton * 174}px)`;
-    // lift.style.transitionDuration = `${(currentButton - currentFloor) * 2}s`;
+    // lift[0].style.transitionDuration = `${(currentButton - currentFloor) * 2}s`;
   });
 }
