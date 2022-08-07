@@ -1,8 +1,8 @@
 const floor_input = document.getElementById("floor_input");
 const lift_input = document.getElementById("lift_input");
-const generate_lift_button = document.getElementById("generate_lift_bttn");
-const generate_floor_button = document.getElementById("generate_floor_bttn");
-const buttons = document.getElementsByClassName("bttn");
+const generate_lift_button = document.getElementById("generate_lift_btn");
+const generate_floor_button = document.getElementById("generate_floor_btn");
+const buttons = document.getElementsByClassName("btn");
 const lift = document.getElementsByClassName("lift");
 const floorInput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const liftInput = [1];
@@ -12,11 +12,11 @@ const currentFloor = "";
 //   transitionDuration: `${(currentFloor - prevFloorCount) * 2}s`,
 // };
 
-const floorSection = document.createElement("floor_section");
-floorSection.className = "floor_section";
+const building = document.createElement("floor_section");
+building.className = "floor_section";
 
 const floor = document.createElement("div");
-floor.className = "floors";
+floor.className = "floor";
 
 // const lift = document.createElement("div");
 // lift.className = "lift";
@@ -28,10 +28,10 @@ const lift_right_door = document.createElement("div");
 lift_right_door.className = "lift_right_door";
 
 const upButton = document.createElement("button");
-upButton.className = "bttn";
+upButton.className = "btn";
 
 const downButton = document.createElement("button");
-downButton.className = "bttn";
+downButton.className = "btn";
 
 // lift.appendChild(lift_left_door, lift_right_door);
 
@@ -39,15 +39,15 @@ generate_floor_button.addEventListener("click", () => {
   if (floor_input.value === "") {
     alert("Please enter a  number");
   } else {
-    const numberOfFloors = floor_input.value;
+    const numberOffloor = floor_input.value;
     const floorArr = Array.from(
-      { length: numberOfFloors },
+      { length: numberOffloor },
       (_, index) => index + 1
     );
     for (let i = 0; i < floorArr.length; i++) {
-      floor.appendChild(lift, upButton, downButton);
+      floor.appendChild(upButton, downButton);
     }
-    floorSection.appendChild(floor);
+    building.appendChild(floor);
     console.log(floorArr);
     console.log(`generate floor button clicked with ${floor_input.value}`);
   }
@@ -60,8 +60,9 @@ generate_lift_button.addEventListener("click", () => {
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
     const currentButton = e.target.id;
+
+    console.log(`button clicked with ID ${currentButton}`);
     lift.style.transform = `translateY(-${currentButton * 174}px)`;
     // lift.style.transitionDuration = `${(currentButton - currentFloor) * 2}s`;
-    console.log("button clicked");
   });
 }
