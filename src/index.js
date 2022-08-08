@@ -91,7 +91,7 @@ for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
     const parentID = parseInt(e.target.parentElement.id);
     nextFloorCount = parentID;
-    const distanceToCoverByLift = parentID * 180;
+    const distanceToCoverByLift = parentID * 183;
     setTimeout(() => {
       prevFloorCount = nextFloorCount;
     }, 50);
