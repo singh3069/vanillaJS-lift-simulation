@@ -1,11 +1,12 @@
 const floor_input = document.getElementById("floor_input");
 const lift_input = document.getElementById("lift_input");
-const generate_lift_button = document.getElementById("generate_lift_btn");
-const generate_floor_button = document.getElementById("generate_floor_btn");
+const generate_lift = document.getElementById("generate_lift_btn");
+const generate_floor = document.getElementById("generate_floor_btn");
 const buttons = document.getElementsByClassName("btn");
 const lift = document.getElementsByClassName("lift");
 const lift_left_door = document.getElementsByClassName("liftLeftDoor");
 const lift_right_door = document.getElementsByClassName("liftRightDoor");
+const building = document.getElementsByClassName("building");
 const floorInput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const liftInput = [1];
 const currentFloor = "";
@@ -42,23 +43,48 @@ const queue = [];
 
 // lift.appendChild(lift_left_door, lift_right_door);
 
-// generate_floor_button.addEventListener("click", () => {
-//   if (floor_input.value === "") {
-//     alert("Please enter a  number");
-//   } else {
-//     const numberOffloor = floor_input.value;
-//     const floorArr = Array.from(
-//       { length: numberOffloor },
-//       (_, index) => index + 1
-//     );
-//     for (let i = 0; i < floorArr.length; i++) {
-//       floor.appendChild(upButton, downButton);
-//     }
-//     building.appendChild(floor);
-//     console.log(floorArr);
-//     console.log(`generate floor button clicked with ${floor_input.value}`);
-//   }
-// });
+generate_floor.addEventListener("click", () => {
+  var numOfFloors = floor_input.value;
+  var numOfLifts = lift_input.value;
+  const floorArr = Array.from({ length: numOfFloors }, (_, index) => index + 1);
+  if (floor_input.value === "") {
+    alert("Please enter a  number");
+  } else {
+    const showFloors = floorArr
+      .map((floor, i) => {
+        return i === 0
+          ? `
+            <div class="ground_floor floor" id="0">
+            <div class="buttonsDiv" id="0">
+              <button class="btn" id="1">UP</button>
+            </div>
+              <div class="lift">
+              <div class="liftLeftDoor"></div>
+              <div class="liftRightDoor"></div>
+            </div>
+            <h3 class="floorName">Ground-Floor</h3>
+          </div>
+          `
+          : `
+            <div class="floor">
+            <div class="buttonsDiv" id=${floor}>
+              <button class="btn" >Down</button>
+              <button class="btn" >UP</button>
+            </div>
+            
+            <h3 class="floorName">Floor${floor}</h3>
+        </div>
+          `;
+      })
+      .reverse();
+    building[0].innerHTML = showFloors;
+
+    // for (let i = 0; i < floorArr.length; i++) {}
+    // building.appendChild(floor);
+    // console.log(floorArr);
+    // console.log(`generate floor button clicked with ${floor_input.value}`);
+  }
+});
 
 // generate_lift_button.addEventListener("click", () => {
 //   console.log("generate lift button clicked");
