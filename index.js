@@ -43,64 +43,32 @@ const queue = [];
 
 // lift.appendChild(lift_left_door, lift_right_door);
 
-generate_floor.addEventListener("click", () => {
-  var numOfFloors = floor_input.value;
-  var numOfLifts = lift_input.value;
-  const floorArr = Array.from({ length: numOfFloors }, (_, index) => index + 1);
-  if (floor_input.value === "") {
-    alert("Please enter a  number");
-  } else {
-    const showFloors = floorArr
-      .map((floor, i) => {
-        return i === 0
-          ? `
-            <div class="ground_floor floor" id="0">
-            <div class="buttonsDiv" id="0">
-              <button class="btn" id="1">UP</button>
-            </div>
-              <div class="lift">
-              <div class="liftLeftDoor"></div>
-              <div class="liftRightDoor"></div>
-            </div>
-            <h3 class="floorName">Ground-Floor</h3>
-          </div>
-          `
-          : `
-            <div class="floor">
-            <div class="buttonsDiv" id=${floor}>
-              <button class="btn" >Down</button>
-              <button class="btn" >UP</button>
-            </div>
-            
-            <h3 class="floorName">Floor${floor}</h3>
-        </div>
-          `;
-      })
-      .reverse();
-    building[0].innerHTML = showFloors;
-
-    // for (let i = 0; i < floorArr.length; i++) {}
-    // building.appendChild(floor);
-    // console.log(floorArr);
-    // console.log(`generate floor button clicked with ${floor_input.value}`);
-  }
-});
+// generate_floor.addEventListener("click", () => {
+//   var numOfFloors = floor_input.value;
+//   var numOfLifts = lift_input.value;
+//   const floorArr = Array.from({ length: numOfFloors }, (_, index) => index + 1);
+//   if (floor_input.value === "") {
+//     alert("Please enter a  number");
+//   } else {
+//     alert("floor have been created");
+//   }
+// });
 
 // generate_lift_button.addEventListener("click", () => {
 //   console.log("generate lift button clicked");
 // });
 
-lift[0].addEventListener("transitionend", (e) => {
-  // var nextTransitionStartAfter = parseInt(e.elapsedTime);
-  // console.log(nextTransitionStartAfter * 1000);
-  // console.log(nextTransitionStartAfter * 1000 + 4000);
-  isMoving = false;
-  // setTimeout(() => {
-  if (queue.length) {
-    queue.shift()();
-  }
-  // }, 6000);
-});
+// lift[0].addEventListener("transitionend", (e) => {
+//   // var nextTransitionStartAfter = parseInt(e.elapsedTime);
+//   // console.log(nextTransitionStartAfter * 1000);
+//   // console.log(nextTransitionStartAfter * 1000 + 4000);
+//   isMoving = false;
+//   // setTimeout(() => {
+//   if (queue.length) {
+//     queue.shift()();
+//   }
+//   // }, 6000);
+// });
 
 const doorsTransition = () => {
   const doorOpen = () => {
@@ -147,10 +115,13 @@ const liftMovement = (e) => {
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
-    addingLiftToQueue(e);
-    if (queue.length === 1 && !isMoving) {
-      queue.shift()();
-    }
+    // addingLiftToQueue(e);
+    // if (queue.length === 1 && !isMoving) {
+    //   queue.shift()();
+    // }
+    // if (isMoving !== true) {
+    liftMovement(e);
+    // }
   });
 }
 
@@ -166,6 +137,6 @@ for (let i = 0; i < buttons.length; i++) {
 //   });
 // });
 
-const addingLiftToQueue = (e) => {
-  queue.push(() => liftMovement(e));
-};
+// const addingLiftToQueue = (e) => {
+//   queue.push(() => liftMovement(e));
+// };
