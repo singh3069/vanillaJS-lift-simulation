@@ -12,7 +12,8 @@ const currentFloor = "";
 var prevFloorCount = 0;
 var nextFloorCount = 0;
 let isMoving = false;
-// const queue = [];
+const queue = [];
+
 // const transitionStyles = {
 //   transform: `translateY(-${currentFloor * 174}px)`,
 //   transitionDuration: `${(currentFloor - prevFloorCount) * 2}s`,
@@ -63,11 +64,16 @@ let isMoving = false;
 //   console.log("generate lift button clicked");
 // });
 
-lift[0].addEventListener("transitionend", () => {
+lift[0].addEventListener("transitionend", (e) => {
+  // var nextTransitionStartAfter = parseInt(e.elapsedTime);
+  // console.log(nextTransitionStartAfter * 1000);
+  // console.log(nextTransitionStartAfter * 1000 + 4000);
   isMoving = false;
+  // setTimeout(() => {
   if (queue.length) {
     queue.shift()();
   }
+  // }, 6000);
 });
 
 const doorsTransition = () => {
@@ -99,6 +105,7 @@ const doorsTransition = () => {
 const liftMovement = (e) => {
   isMoving = true;
   const parentID = parseInt(e.target.parentElement.id);
+
   nextFloorCount = parentID;
   const distanceToCoverByLift = parentID * 183;
   setTimeout(() => {
@@ -109,32 +116,29 @@ const liftMovement = (e) => {
   lift[0].style.transitionDuration = `${liftSpeed * 2}s`;
   setTimeout(() => {
     doorsTransition();
-  }, liftSpeed * 2 * 1000);
+  }, liftSpeed * 2000);
 };
 
-const queue = [];
-
-// for (let i = 0; i < buttons.length; i++) {
-//   buttons[i].addEventListener("click", (e) => {
-//     addingLiftToQueue(e);
-//     if (queue.length === 1 && !isMoving) {
-//       queue.shift()();
-//     }
-//   });
-// }
-
-Array.from(buttons).forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", (e) => {
     addingLiftToQueue(e);
     if (queue.length === 1 && !isMoving) {
       queue.shift()();
     }
-
-    // if (queue.length === 1 && !isMoving) {
-    //   queue.shift()();
-    // }
   });
-});
+}
+
+// Array.from(buttons).forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     addingLiftToQueue(e);
+//     var nextTransitionStartAfter = parseInt(e.target.parentElement.id);
+//     // console.log(nextTransitionStartAfter);
+
+//     if (queue.length === 1 && !isMoving) {
+//       queue.shift()();
+//     }
+//   });
+// });
 
 const addingLiftToQueue = (e) => {
   queue.push(() => liftMovement(e));

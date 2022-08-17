@@ -176,6 +176,8 @@ body {
     height: 100%;
     width: 50%;
     background: grey;
+    /* position: absolute; */
+    z-index: 30;
 
 }
 
