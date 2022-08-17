@@ -15,61 +15,6 @@ var nextFloorCount = 0;
 let isMoving = false;
 const queue = [];
 
-// const transitionStyles = {
-//   transform: `translateY(-${currentFloor * 174}px)`,
-//   transitionDuration: `${(currentFloor - prevFloorCount) * 2}s`,
-// };
-
-// const building = document.createElement("floor_section");
-// building.className = "floor_section";
-
-// const floor = document.createElement("div");
-// floor.className = "floor";
-
-// // const lift = document.createElement("div");
-// // lift.className = "lift";
-
-// const lift_left_door = document.createElement("div");
-// lift_left_door.className = "lift_left_door";
-
-// const lift_right_door = document.createElement("div");
-// lift_right_door.className = "lift_right_door";
-
-// const upButton = document.createElement("button");
-// upButton.className = "btn";
-
-// const downButton = document.createElement("button");
-// downButton.className = "btn";
-
-// lift.appendChild(lift_left_door, lift_right_door);
-
-// generate_floor.addEventListener("click", () => {
-//   var numOfFloors = floor_input.value;
-//   var numOfLifts = lift_input.value;
-//   const floorArr = Array.from({ length: numOfFloors }, (_, index) => index + 1);
-//   if (floor_input.value === "") {
-//     alert("Please enter a  number");
-//   } else {
-//     alert("floor have been created");
-//   }
-// });
-
-// generate_lift_button.addEventListener("click", () => {
-//   console.log("generate lift button clicked");
-// });
-
-// lift[0].addEventListener("transitionend", (e) => {
-//   // var nextTransitionStartAfter = parseInt(e.elapsedTime);
-//   // console.log(nextTransitionStartAfter * 1000);
-//   // console.log(nextTransitionStartAfter * 1000 + 4000);
-//   isMoving = false;
-//   // setTimeout(() => {
-//   if (queue.length) {
-//     queue.shift()();
-//   }
-//   // }, 6000);
-// });
-
 const doorsTransition = () => {
   const doorOpen = () => {
     lift_left_door[0].style.cssText = `
@@ -115,28 +60,6 @@ const liftMovement = (e) => {
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
-    // addingLiftToQueue(e);
-    // if (queue.length === 1 && !isMoving) {
-    //   queue.shift()();
-    // }
-    // if (isMoving !== true) {
     liftMovement(e);
-    // }
   });
 }
-
-// Array.from(buttons).forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     addingLiftToQueue(e);
-//     var nextTransitionStartAfter = parseInt(e.target.parentElement.id);
-//     // console.log(nextTransitionStartAfter);
-
-//     if (queue.length === 1 && !isMoving) {
-//       queue.shift()();
-//     }
-//   });
-// });
-
-// const addingLiftToQueue = (e) => {
-//   queue.push(() => liftMovement(e));
-// };
