@@ -2,7 +2,7 @@ const floor_input = document.getElementById("floor_input");
 const lift_input = document.getElementById("lift_input");
 const generate_lift = document.getElementById("generate_lift_btn");
 const generate_floor = document.getElementById("generate_floor_btn");
-const buttons = document.getElementsByClassName("btn");
+// const buttons = document.getElementsByClassName("btn");
 // const lift = document.getElementsByClassName("lift");
 // const lift_left_door = document.getElementsByClassName("liftLeftDoor");
 // const lift_right_door = document.getElementsByClassName("liftRightDoor");
@@ -14,10 +14,31 @@ let isMoving = false;
 
 const generateFloor = () => {
   const totalNumberOfFloors = parseInt(floor_input.value);
-  for (let i = 0; i < totalNumberOfFloors; i++) {
+  // const totalNumberOfFloors = Array.from(
+  //   { length: parseInt(floor_input.value) },
+  //   (_, index) => index + 1
+  // );
+  console.log({ totalNumberOfFloors });
+  for (var i = totalNumberOfFloors - 1; i >= 0; i--) {
+    console.log(i);
     const floor = document.createElement("div");
     floor.classList.add("floor");
     floor.id = i;
+    floor.innerHTML =
+      floor.id == 0
+        ? `<h3 class="floorName">Ground Floor</h3>`
+        : `<h3 class="floorName">Floor ${i}</h3>`;
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.classList.add("buttonsDiv");
+    buttonsDiv.id = i;
+    const upButton = document.createElement("button");
+    upButton.classList.add("btn");
+    upButton.innerText = "UP";
+    const downButton = document.createElement("button");
+    downButton.classList.add("btn");
+    downButton.innerText = "Down";
+    buttonsDiv.append(upButton, downButton);
+    floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
   }
 };
@@ -67,8 +88,8 @@ const callLift = (e) => {
   }, liftSpeed * 2000);
 };
 
-for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", (e) => {
-    callLift(e);
-  });
-}
+// for (let i = 0; i < buttons.length; i++) {
+//   buttons[i].addEventListener("click", (e) => {
+//     callLift(e);
+//   });
+// }
