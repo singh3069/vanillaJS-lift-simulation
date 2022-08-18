@@ -12,15 +12,28 @@ var nextFloorCount = 0;
 let isMoving = false;
 // const queue = [];
 
+const generateLift = (floorId, floor) => {
+  const totalNumberOfFloors = parseInt(lift_input.value);
+  const liftContainer = document.createElement("div");
+  liftContainer.classList.add("lift_Container");
+  if (floorId == "0") {
+    for (var i = 0; i < totalNumberOfFloors; i++) {
+      const lift = document.createElement("div");
+      lift.classList.add("lift");
+      const liftLeftDoor = document.createElement("div");
+      liftLeftDoor.classList.add("liftLeftDoor");
+      const liftRightDoor = document.createElement("div");
+      liftRightDoor.classList.add("liftRightDoor");
+      lift.append(liftLeftDoor, liftRightDoor);
+      liftContainer.append(lift);
+      floor.appendChild(liftContainer);
+    }
+  }
+};
+
 const generateFloor = () => {
   const totalNumberOfFloors = parseInt(floor_input.value);
-  // const totalNumberOfFloors = Array.from(
-  //   { length: parseInt(floor_input.value) },
-  //   (_, index) => index + 1
-  // );
-  console.log({ totalNumberOfFloors });
   for (var i = totalNumberOfFloors - 1; i >= 0; i--) {
-    console.log(i);
     const floor = document.createElement("div");
     floor.classList.add("floor");
     floor.id = i;
@@ -40,6 +53,8 @@ const generateFloor = () => {
     buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
+    generate_lift.addEventListener("click", generateLift(floor.id, floor));
+    // generateLift(floor.id, floor);
   }
 };
 
@@ -88,8 +103,8 @@ const callLift = (e) => {
   }, liftSpeed * 2000);
 };
 
-// for (let i = 0; i < buttons.length; i++) {
-//   buttons[i].addEventListener("click", (e) => {
-//     callLift(e);
-//   });
-// }
+for (let i = 0; i < btn.length; i++) {
+  btn[i].addEventListener("click", (e) => {
+    callLift(e);
+  });
+}
