@@ -46,7 +46,11 @@ const generateFloors = () => {
     const downButton = document.createElement("button");
     downButton.classList.add("btn");
     downButton.innerText = "Down";
-    buttonsDiv.append(upButton, downButton);
+    floor.id == 0
+      ? buttonsDiv.append(upButton)
+      : floor.id == totalNumberOfFloors
+      ? buttonsDiv.append(downButton)
+      : buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
     generate_lift.addEventListener("click", generateLifts(floor.id, floor));
@@ -105,7 +109,6 @@ const callLift = (e) => {
 
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn")) {
-    console.log(e.target.parentElement.id);
     callLift(e);
   }
 });
