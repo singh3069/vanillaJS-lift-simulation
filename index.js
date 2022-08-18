@@ -8,7 +8,7 @@ var nextFloorCount = 0;
 let isMoving = false;
 // const queue = [];
 
-const generateLift = (floorId, floor) => {
+const generateLifts = (floorId, floor) => {
   const totalNumberOfFloors = parseInt(lift_input.value);
   const liftContainer = document.createElement("div");
   liftContainer.classList.add("lift_Container");
@@ -27,7 +27,7 @@ const generateLift = (floorId, floor) => {
   }
 };
 
-const generateFloor = () => {
+const generateFloors = () => {
   const totalNumberOfFloors = parseInt(floor_input.value);
   for (var i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
@@ -49,12 +49,12 @@ const generateFloor = () => {
     buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
-    generate_lift.addEventListener("click", generateLift(floor.id, floor));
+    generate_lift.addEventListener("click", generateLifts(floor.id, floor));
     // generateLift(floor.id, floor);
   }
 };
 
-generate_floor.addEventListener("click", generateFloor);
+generate_floor.addEventListener("click", generateFloors);
 
 const lift = document.getElementsByClassName("lift");
 const lift_left_door = document.getElementsByClassName("liftLeftDoor");
