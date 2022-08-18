@@ -2,10 +2,6 @@ const floor_input = document.getElementById("floor_input");
 const lift_input = document.getElementById("lift_input");
 const generate_lift = document.getElementById("generate_lift_btn");
 const generate_floor = document.getElementById("generate_floor_btn");
-// const buttons = document.getElementsByClassName("btn");
-// const lift = document.getElementsByClassName("lift");
-// const lift_left_door = document.getElementsByClassName("liftLeftDoor");
-// const lift_right_door = document.getElementsByClassName("liftRightDoor");
 const building = document.getElementsByClassName("building");
 var prevFloorCount = 0;
 var nextFloorCount = 0;
@@ -33,7 +29,7 @@ const generateLift = (floorId, floor) => {
 
 const generateFloor = () => {
   const totalNumberOfFloors = parseInt(floor_input.value);
-  for (var i = totalNumberOfFloors - 1; i >= 0; i--) {
+  for (var i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
     floor.classList.add("floor");
     floor.id = i;
@@ -59,6 +55,10 @@ const generateFloor = () => {
 };
 
 generate_floor.addEventListener("click", generateFloor);
+
+const lift = document.getElementsByClassName("lift");
+const lift_left_door = document.getElementsByClassName("liftLeftDoor");
+const lift_right_door = document.getElementsByClassName("liftRightDoor");
 
 const doorsTransition = () => {
   const doorOpen = () => {
@@ -103,8 +103,14 @@ const callLift = (e) => {
   }, liftSpeed * 2000);
 };
 
-for (let i = 0; i < btn.length; i++) {
-  btn[i].addEventListener("click", (e) => {
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn")) {
+    console.log(e.target.parentElement.id);
     callLift(e);
-  });
-}
+  }
+});
+// for (let i = 0; i < btn.length; i++) {
+//   btn[i].addEventListener("click", (e) => {
+//     callLift(e);
+//   });
+// }
