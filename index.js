@@ -6,7 +6,8 @@ const building = document.getElementsByClassName("building");
 var prevFloorCount = 0;
 var nextFloorCount = 0;
 let isMoving = false;
-// const queue = [];
+const liftData = [{ status: false, currentFloor: "", liftID: "" }];
+var lifts = [];
 
 const generateLifts = (floorId, floor) => {
   const totalNumberOfFloors = parseInt(lift_input.value);
@@ -16,19 +17,21 @@ const generateLifts = (floorId, floor) => {
     for (var i = 0; i < totalNumberOfFloors; i++) {
       const lift = document.createElement("div");
       lift.classList.add("lift");
+      lift.id = i;
       const liftLeftDoor = document.createElement("div");
       liftLeftDoor.classList.add("liftLeftDoor");
       const liftRightDoor = document.createElement("div");
       liftRightDoor.classList.add("liftRightDoor");
       lift.append(liftLeftDoor, liftRightDoor);
       liftContainer.append(lift);
+      lifts.push(lift);
       floor.appendChild(liftContainer);
     }
   }
 };
 
 const generateFloors = () => {
-  const totalNumberOfFloors = parseInt(floor_input.value);
+  var totalNumberOfFloors = parseInt(floor_input.value);
   for (var i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
     floor.classList.add("floor");
@@ -53,8 +56,10 @@ const generateFloors = () => {
       : buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
+    totalNumberOfFloors = "";
     generate_lift.addEventListener("click", generateLifts(floor.id, floor));
     // generateLift(floor.id, floor);
+    console.log(lifts);
   }
 };
 
@@ -64,23 +69,23 @@ const lift = document.getElementsByClassName("lift");
 const lift_left_door = document.getElementsByClassName("liftLeftDoor");
 const lift_right_door = document.getElementsByClassName("liftRightDoor");
 
-const doorsTransition = () => {
+const doorsTransition = (i) => {
   const doorOpen = () => {
-    lift_left_door[0].style.cssText = `
+    lift_left_door[i].style.cssText = `
     width: 0%;
     transition: width 2.5s;
     `;
-    lift_right_door[0].style.cssText = `
+    lift_right_door[i].style.cssText = `
   width: 0%;
   transition: width 2.5s;
   `;
   };
   const doorClose = () => {
-    lift_left_door[0].style.cssText = `
+    lift_left_door[i].style.cssText = `
     width: 50%;
     transition: width 2.5s ;
     `;
-    lift_right_door[0].style.cssText = `
+    lift_right_door[i].style.cssText = `
   width: 50%;
   transition: width 2.5s;
   `;
@@ -90,26 +95,43 @@ const doorsTransition = () => {
   setTimeout(doorClose, 2500);
 };
 
-const callLift = (e) => {
-  isMoving = true;
+const callLift = (e, i) => {
   const parentID = parseInt(e.target.parentElement.id);
-
+  // const liftStatus = liftData.find((el) => el.status == false);
+  // liftStatus.status = true;
+  // liftStatus.currentFloor = parentID;
   nextFloorCount = parentID;
   const distanceToCoverByLift = parentID * 183;
   setTimeout(() => {
     prevFloorCount = nextFloorCount;
   }, 50);
   const liftSpeed = Math.abs(nextFloorCount - prevFloorCount);
-  lift[0].style.transform = `translateY(-${distanceToCoverByLift}px)`;
-  lift[0].style.transitionDuration = `${liftSpeed * 2}s`;
+  lift[i].style.transform = `translateY(-${distanceToCoverByLift}px)`;
+  lift[i].style.transitionDuration = `${liftSpeed * 2}s`;
   setTimeout(() => {
-    doorsTransition();
+    doorsTransition(i);
   }, liftSpeed * 2000);
+  // setTimeout(() => {
+  //   liftStatus.status = false;
+
+  // }, liftSpeed * 4500);
+};
+
+const addLiftToQueue = (e) => {
+  const totalLiftsArray = lifts.map((id) => parseInt(id.id));
+  const liftStatus = liftData.find((el) => el.status == false);
+  // ary.push(liftStatus);
+  // console.log(ary);
+  // if (liftStatus.status == false) {
+  for (var i = 0; i < totalLiftsArray.length; i++) {
+    callLift(e, i);
+  }
+  // }
 };
 
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn")) {
-    callLift(e);
+    addLiftToQueue(e);
   }
 });
 // for (let i = 0; i < btn.length; i++) {
