@@ -3,12 +3,8 @@ const lift_input = document.getElementById("lift_input");
 const generate_lift = document.getElementById("generate_lift_btn");
 const generate_floor = document.getElementById("generate_floor_btn");
 const building = document.getElementsByClassName("building");
-// var prevFloorCount = 0;
-// var nextFloorCount = 0;
-let isMoving = false;
-// const liftData = [{ status: false, currentFloor: "", liftID: "" }];
 var liftsArr = [];
-var freeLift = [];
+var freeLiftsArr = [];
 
 const generateLifts = (floorId, floor) => {
   const totalNumberOfFloors = parseInt(lift_input.value);
@@ -60,7 +56,6 @@ const generateFloors = () => {
     building[0].appendChild(floor);
     totalNumberOfFloors = "";
     generate_lift.addEventListener("click", generateLifts(floor.id, floor));
-    // generateLift(floor.id, floor);
   }
 };
 
@@ -70,23 +65,23 @@ const lift = document.getElementsByClassName("lift");
 const lift_left_door = document.getElementsByClassName("liftLeftDoor");
 const lift_right_door = document.getElementsByClassName("liftRightDoor");
 
-const doorsTransition = (i) => {
+const doorsTransition = (liftID) => {
   const doorOpen = () => {
-    lift_left_door[i].style.cssText = `
+    lift_left_door[liftID].style.cssText = `
     width: 0%;
     transition: width 2.5s;
     `;
-    lift_right_door[i].style.cssText = `
+    lift_right_door[liftID].style.cssText = `
   width: 0%;
   transition: width 2.5s;
   `;
   };
   const doorClose = () => {
-    lift_left_door[i].style.cssText = `
+    lift_left_door[liftID].style.cssText = `
     width: 50%;
     transition: width 2.5s ;
     `;
-    lift_right_door[i].style.cssText = `
+    lift_right_door[liftID].style.cssText = `
   width: 50%;
   transition: width 2.5s;
   `;
@@ -96,58 +91,43 @@ const doorsTransition = (i) => {
   setTimeout(doorClose, 2500);
 };
 
-const callLift = (parentID, i) => {
-  let prevFloorCount = liftsArr[i].currentFloor;
-  liftsArr[i].busy = true;
-  liftsArr[i].currentFloor = parentID;
-  // console.log(liftStatus);
-  let nextFloorCount = parentID;
-  const distanceToCoverByLift = parentID * 183;
-  // setTimeout(() => {
-  //   prevFloorCount = nextFloorCount;
-  // }, 50);
+const callLift = (calledFloor, liftID) => {
+  let prevFloorCount = liftsArr[liftID].currentFloor;
+  liftsArr[liftID].busy = true;
+  liftsArr[liftID].currentFloor = calledFloor;
+  let nextFloorCount = calledFloor;
+  const distanceToCoverByLift = calledFloor * 183;
   const liftSpeed = Math.abs(nextFloorCount - prevFloorCount);
-  console.log({ nextFloorCount, prevFloorCount });
 
-  lift[i].style.transform = `translateY(-${distanceToCoverByLift}px)`;
-  lift[i].style.transitionDuration = `${liftSpeed * 2}s`;
+  lift[liftID].style.transform = `translateY(-${distanceToCoverByLift}px)`;
+  lift[liftID].style.transitionDuration = `${liftSpeed * 2}s`;
   setTimeout(() => {
-    doorsTransition(i);
-  }, liftSpeed * 2500);
+    doorsTransition(liftID);
+  }, liftSpeed * 2000);
 
   setTimeout(() => {
-    liftsArr[i].busy = false;
-    if (freeLift.length > 0) {
-      liftManager(freeLift[0]);
-      freeLift.shift();
+    liftsArr[liftID].busy = false;
+    if (freeLiftsArr.length > 0) {
+      liftManager(freeLiftsArr[0]);
+      freeLiftsArr.shift();
     }
   }, liftSpeed * 4500);
 };
 
-const liftManager = (e) => {
-  const parentID = parseInt(e.target.parentElement.id);
+const liftManager = (event) => {
+  const calledFloor = parseInt(event.target.parentElement.id);
 
   // figuring out which 1st non busy lift is available
   const liftStatus = liftsArr.find((el) => el.busy == false);
   if (liftStatus) {
-    callLift(parentID, liftStatus.liftID);
+    callLift(calledFloor, liftStatus.liftID);
   } else {
-    freeLift.push(e);
+    freeLiftsArr.push(event);
   }
-  // liftStatus.busy = true;
-  // let i = 0;
-  // console.log(liftStatus);
-  // for (let i = 0; i < liftsArr.length; i++) {
-  //   if (liftStatus.currentFloor == 0 || liftStatus.liftID == 0) {
-  //     liftStatus.currentFloor = parentID;
-  //     liftStatus.busy = true;
-  //     callLift(parentID, i);
-  //   }
-  // }
 };
 
-window.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btn")) {
-    liftManager(e);
+window.addEventListener("click", (event) => {
+  if (event.target.classList.contains("btn")) {
+    liftManager(event);
   }
 });
