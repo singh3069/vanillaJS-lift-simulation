@@ -6,7 +6,7 @@ const building = document.getElementsByClassName("building");
 var prevFloorCount = 0;
 var nextFloorCount = 0;
 let isMoving = false;
-const liftData = [{ status: false, currentFloor: "", liftID: "" }];
+// const liftData = [{ status: false, currentFloor: "", liftID: "" }];
 var lifts = [];
 
 const generateLifts = (floorId, floor) => {
@@ -24,11 +24,14 @@ const generateLifts = (floorId, floor) => {
       liftRightDoor.classList.add("liftRightDoor");
       lift.append(liftLeftDoor, liftRightDoor);
       liftContainer.append(lift);
-      lifts.push(lift);
+      // lifts.push(lift);
       floor.appendChild(liftContainer);
+      var liftStatus = { busy: false, currentFloor: 0, liftID: i };
+      lifts.push(liftStatus);
     }
   }
 };
+console.log(lifts);
 
 const generateFloors = () => {
   var totalNumberOfFloors = parseInt(floor_input.value);
@@ -119,7 +122,7 @@ const callLift = (e, i) => {
 
 const addLiftToQueue = (e) => {
   const totalLiftsArray = lifts.map((id) => parseInt(id.id));
-  const liftStatus = liftData.find((el) => el.status == false);
+  // const liftStatus = liftData.find((el) => el.status == false);
   // ary.push(liftStatus);
   // console.log(ary);
   // if (liftStatus.status == false) {
@@ -139,3 +142,5 @@ window.addEventListener("click", (e) => {
 //     callLift(e);
 //   });
 // }
+
+console.log(lifts);
