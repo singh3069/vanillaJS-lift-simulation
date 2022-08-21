@@ -3,11 +3,12 @@ const lift_input = document.getElementById("lift_input");
 const generate_lift = document.getElementById("generate_lift_btn");
 const generate_floor = document.getElementById("generate_floor_btn");
 const building = document.getElementsByClassName("building");
-var prevFloorCount = 0;
-var nextFloorCount = 0;
+// var prevFloorCount = 0;
+// var nextFloorCount = 0;
 let isMoving = false;
 // const liftData = [{ status: false, currentFloor: "", liftID: "" }];
-var lifts = [];
+var liftsArr = [];
+var freeLift = [];
 
 const generateLifts = (floorId, floor) => {
   const totalNumberOfFloors = parseInt(lift_input.value);
@@ -24,14 +25,12 @@ const generateLifts = (floorId, floor) => {
       liftRightDoor.classList.add("liftRightDoor");
       lift.append(liftLeftDoor, liftRightDoor);
       liftContainer.append(lift);
-      // lifts.push(lift);
       floor.appendChild(liftContainer);
       var liftStatus = { busy: false, currentFloor: 0, liftID: i };
-      lifts.push(liftStatus);
+      liftsArr.push(liftStatus);
     }
   }
 };
-console.log(lifts);
 
 const generateFloors = () => {
   var totalNumberOfFloors = parseInt(floor_input.value);
@@ -62,7 +61,6 @@ const generateFloors = () => {
     totalNumberOfFloors = "";
     generate_lift.addEventListener("click", generateLifts(floor.id, floor));
     // generateLift(floor.id, floor);
-    console.log(lifts);
   }
 };
 
@@ -98,49 +96,58 @@ const doorsTransition = (i) => {
   setTimeout(doorClose, 2500);
 };
 
-const callLift = (e, i) => {
-  const parentID = parseInt(e.target.parentElement.id);
-  // const liftStatus = liftData.find((el) => el.status == false);
-  // liftStatus.status = true;
-  // liftStatus.currentFloor = parentID;
-  nextFloorCount = parentID;
+const callLift = (parentID, i) => {
+  let prevFloorCount = liftsArr[i].currentFloor;
+  liftsArr[i].busy = true;
+  liftsArr[i].currentFloor = parentID;
+  // console.log(liftStatus);
+  let nextFloorCount = parentID;
   const distanceToCoverByLift = parentID * 183;
-  setTimeout(() => {
-    prevFloorCount = nextFloorCount;
-  }, 50);
+  // setTimeout(() => {
+  //   prevFloorCount = nextFloorCount;
+  // }, 50);
   const liftSpeed = Math.abs(nextFloorCount - prevFloorCount);
+  console.log({ nextFloorCount, prevFloorCount });
+
   lift[i].style.transform = `translateY(-${distanceToCoverByLift}px)`;
   lift[i].style.transitionDuration = `${liftSpeed * 2}s`;
   setTimeout(() => {
     doorsTransition(i);
-  }, liftSpeed * 2000);
-  // setTimeout(() => {
-  //   liftStatus.status = false;
+  }, liftSpeed * 2500);
 
-  // }, liftSpeed * 4500);
+  setTimeout(() => {
+    liftsArr[i].busy = false;
+    if (freeLift.length > 0) {
+      liftManager(freeLift[0]);
+      freeLift.shift();
+    }
+  }, liftSpeed * 4500);
 };
 
-const addLiftToQueue = (e) => {
-  const totalLiftsArray = lifts.map((id) => parseInt(id.id));
-  // const liftStatus = liftData.find((el) => el.status == false);
-  // ary.push(liftStatus);
-  // console.log(ary);
-  // if (liftStatus.status == false) {
-  for (var i = 0; i < totalLiftsArray.length; i++) {
-    callLift(e, i);
+const liftManager = (e) => {
+  const parentID = parseInt(e.target.parentElement.id);
+
+  // figuring out which 1st non busy lift is available
+  const liftStatus = liftsArr.find((el) => el.busy == false);
+  if (liftStatus) {
+    callLift(parentID, liftStatus.liftID);
+  } else {
+    freeLift.push(e);
   }
+  // liftStatus.busy = true;
+  // let i = 0;
+  // console.log(liftStatus);
+  // for (let i = 0; i < liftsArr.length; i++) {
+  //   if (liftStatus.currentFloor == 0 || liftStatus.liftID == 0) {
+  //     liftStatus.currentFloor = parentID;
+  //     liftStatus.busy = true;
+  //     callLift(parentID, i);
+  //   }
   // }
 };
 
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn")) {
-    addLiftToQueue(e);
+    liftManager(e);
   }
 });
-// for (let i = 0; i < btn.length; i++) {
-//   btn[i].addEventListener("click", (e) => {
-//     callLift(e);
-//   });
-// }
-
-console.log(lifts);
