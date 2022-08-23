@@ -7,11 +7,12 @@ var liftsArr = [];
 var freeLiftsArr = [];
 
 const generateLifts = (floorId, floor) => {
-  const totalNumberOfFloors = parseInt(lift_input.value);
+  const totalNumberOfLifts = parseInt(lift_input.value);
+  console.log({ totalNumberOfLifts });
   const liftContainer = document.createElement("div");
   liftContainer.classList.add("lift_Container");
   if (floorId == "0") {
-    for (var i = 0; i < totalNumberOfFloors; i++) {
+    for (var i = 0; i < totalNumberOfLifts; i++) {
       const lift = document.createElement("div");
       lift.classList.add("lift");
       lift.id = i;
@@ -25,6 +26,7 @@ const generateLifts = (floorId, floor) => {
       var liftStatus = { busy: false, currentFloor: 0, liftID: i };
       liftsArr.push(liftStatus);
     }
+    lift_input.value = "";
   }
 };
 
@@ -54,8 +56,8 @@ const generateFloors = () => {
       : buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
-    totalNumberOfFloors = "";
-    generate_lift.addEventListener("click", generateLifts(floor.id, floor));
+    generateLifts(floor.id, floor);
+    // generate_lift.addEventListener("click", generateLifts(floor.id, floor));
   }
 };
 
@@ -123,6 +125,15 @@ const liftManager = (event) => {
   } else {
     freeLiftsArr.push(event);
   }
+  const nearestLifts = liftsArr.map((el) => {
+    return el.currentFloor;
+  });
+  const nearestLiftID = nearestLifts.reduce((a, b) => {
+    return Math.abs(b - calledFloor) < Math.abs(a - calledFloor) ? b : a;
+  });
+  // console.log({ calledFloor });
+  // console.log({ nearestLifts });
+  // console.log({ nearestLiftID });
 };
 
 window.addEventListener("click", (event) => {
@@ -130,3 +141,5 @@ window.addEventListener("click", (event) => {
     liftManager(event);
   }
 });
+
+// we can now each and every lifts position by currentFloor store it in array and then check that which lifts position is nearest to calledFloor
