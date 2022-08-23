@@ -104,14 +104,13 @@ const callLift = (calledFloor, liftID) => {
   setTimeout(() => {
     doorsTransition(liftID);
   }, liftSpeed * 2000);
-
   setTimeout(() => {
     liftsArr[liftID].busy = false;
     if (freeLiftsArr.length > 0) {
       liftManager(freeLiftsArr[0]);
       freeLiftsArr.shift();
     }
-  }, liftSpeed * 4500);
+  }, liftSpeed * 2000 + 5000);
 };
 
 const liftManager = (event) => {
