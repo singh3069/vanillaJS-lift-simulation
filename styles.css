@@ -40,9 +40,10 @@ body {
         /* height: 100%; */
         display: flex;
         /* position: fixed; */
-        align-items: right;
+        align-items: center;
         justify-content: center;
         flex-direction: column;
+        
     }
 
 .inputDiv {
@@ -123,15 +124,6 @@ body {
     border-radius: 3px;
 }
 
-/* .liftDiv {
-  width: 100%;
-  margin: 10px auto;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  background-color: brown;
-} */
 
 .lift_Container{
     width:100%;
@@ -155,29 +147,7 @@ body {
     /* bottom: -25px; */
 }
 
-/* .lift_2 {
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    height: 82px;
-    width: 61px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    position: absolute;
-    right: 5%;
-}
 
-.lift_3 {
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    height: 82px;
-    width: 61px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    position: absolute;
-    right: 20%;
-} */
 
 .liftLeftDoor,
 .liftRightDoor {
@@ -199,50 +169,37 @@ body {
 
 
 
-/*----------------------------------------- Media Querry -----------------------------------------  */
+/*----------------------------------------- Media Query -----------------------------------------  */
 
 @media (max-width: 1400px) {
-    /* .floor {
-    background-color: red;
-  } */
-
-    .room {
-        height: 100px;
-        width: 100px;
-    }
-
-    /* .lift {
-        left: 14%;
-    } */
 
     .inputDiv {
         display: flex;
-        width: 26%;
+        width: 47%;
+        margin-top: 60px;
     }
+    .generate{
+        width: 100%;
+        font-size: 10px;
+    }
+
+        .sidebar {
+            align-items: center;
+        }
 }
 
-/* @media (max-width: 1111px) {
-    .lift {
-        left: 14%;
-    }
-} */
 
 @media (max-width: 1150px) {
     .room {
         height: 87px;
         width: 87px;
     }
-
-    /* .lift {
-    left: 15%;
-  } */
+  .sidebar {
+      align-items: center;
+  }
 }
 
 @media (max-width: 1000px) {
-    .room {
-        height: 70px;
-        width: 70px;
-    }
 
     .lift {
         height: 62px;
@@ -250,22 +207,22 @@ body {
         left: 17%;
     }
 
-    .balcony {
-        height: 22px;
-    }
+        .sidebar {
+            align-items: center;
+        }
 }
 
 @media (max-width: 860px) {
     .lift {
         left: 15%;
     }
+
+        .sidebar {
+            align-items: center;
+        }
 }
 
 @media (max-width: 800px) {
-    .room {
-        height: 60px;
-        width: 60px;
-    }
 
     .btn {
         width: 38px;
@@ -274,12 +231,16 @@ body {
     .lift {
         left: 16%;
     }
+
+    .sidebar {
+            align-items: center;
+        }
 }
 
 @media (max-width: 755px) {
-    .room {
-        width: 55px;
-    }
+    .sidebar {
+            align-items: center;
+        }
 }
 
 @media (max-width: 705px) {
@@ -288,14 +249,13 @@ body {
         width: 36px;
         left: 16%;
     }
+
+    .sidebar{
+        align-items: center;
+    }
 }
 
 @media (max-width: 677px) {
-    .room {
-        height: 50px;
-        width: 45px;
-    }
-
     .lift {
         left: 17.5%;
     }
@@ -303,13 +263,13 @@ body {
     .btn {
         font-size: 10px;
     }
+
+    .sidebar {
+        align-items: center;
+    }
 }
 
 @media (max-width: 550px) {
-    .room {
-        height: 50px;
-        width: 45px;
-    }
 
     .lift {
         height: 38px;
@@ -326,18 +286,18 @@ body {
     .inputDiv {
         left: 34%;
     }
+    .sidebar_and_content{
+    flex-direction: column;
+    }
+
+    .sidebar{
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    }
 }
 
 @media (max-width: 370px) {
-    .room {
-        height: 36px;
-        width: 30px;
-    }
-
-    .balcony {
-        height: 10px;
-    }
-
     .lift {
         height: 36px;
         width: 14px;
@@ -358,7 +318,3 @@ body {
         font-weight: 700;
     }
 }
-
-/* .inputDiv {
-    width: 20%;
-  } */
