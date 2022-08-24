@@ -8,11 +8,13 @@ var freeLiftsArr = [];
 
 const generateLifts = (floorId, floor) => {
   const totalNumberOfLifts = parseInt(lift_input.value);
-  console.log({ totalNumberOfLifts });
+  // if (totalNumberOfLifts == "") {
+  //   alert("Enter the number of lifts");
+  // }
   const liftContainer = document.createElement("div");
   liftContainer.classList.add("lift_Container");
   if (floorId == "0") {
-    for (var i = 0; i < totalNumberOfLifts; i++) {
+    for (let i = 0; i < totalNumberOfLifts; i++) {
       const lift = document.createElement("div");
       lift.classList.add("lift");
       lift.id = i;
@@ -31,8 +33,13 @@ const generateLifts = (floorId, floor) => {
 };
 
 const generateFloors = () => {
+  building[0].innerHTML = "";
   var totalNumberOfFloors = parseInt(floor_input.value);
-  for (var i = totalNumberOfFloors; i >= 0; i--) {
+  // if (totalNumberOfFloors == "") {
+  //   alert("Enter the  number of floors");
+  // }
+
+  for (let i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
     floor.classList.add("floor");
     floor.id = i;
@@ -59,6 +66,7 @@ const generateFloors = () => {
     generateLifts(floor.id, floor);
     // generate_lift.addEventListener("click", generateLifts(floor.id, floor));
   }
+  floor_input.value = "";
 };
 
 generate_floor.addEventListener("click", generateFloors);
@@ -125,12 +133,12 @@ const liftManager = (event) => {
   } else {
     freeLiftsArr.push(event);
   }
-  const nearestLifts = liftsArr.map((el) => {
-    return el.currentFloor;
-  });
-  const nearestLiftID = nearestLifts.reduce((a, b) => {
-    return Math.abs(b - calledFloor) < Math.abs(a - calledFloor) ? b : a;
-  });
+  // const nearestLifts = liftsArr.map((el) => {
+  //   return el.currentFloor;
+  // });
+  // const nearestLiftID = nearestLifts.reduce((a, b) => {
+  //   return Math.abs(b - calledFloor) < Math.abs(a - calledFloor) ? b : a;
+  // });
   // console.log({ calledFloor });
   // console.log({ nearestLifts });
   // console.log({ nearestLiftID });
