@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -8,123 +8,121 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-
-
-.main_sec{
-    display: flex;
-    height: 100%;
-    /* align-items: center; */
-    height: 100%;
-    flex-direction: column;
+.main_sec {
+  display: flex;
+  height: 100%;
+  /* align-items: center; */
+  height: 100%;
+  flex-direction: column;
 }
 
 .heading {
-    /* top: 20; */
-    position: fixed;
-    color: orange;
-    z-index: 10;
-    padding-left: 10px;
-    padding-top: 10px;
-
+  /* top: 20; */
+  position: fixed;
+  color: orange;
+  z-index: 10;
+  padding-left: 10px;
+  padding-top: 10px;
 }
-.sidebar_and_content{
-    display:flex;
-    justify-content: space-between;
-    /* align-items: center; */
-    flex-direction: row;
-    width: 100%;
-    height: 100vh;
+.sidebar_and_content {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
 }
 
 .sidebar {
-        width: 30%;
-        /* height: 100%; */
-        display: flex;
-        /* position: fixed; */
-        align-items: right;
-        justify-content: center;
-        flex-direction: column;
-    }
+  width: 30%;
+  /* height: 100%; */
+  display: flex;
+  /* position: fixed; */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .inputDiv {
-    display: flex;
-    padding: 40px;
-    /* border: 2px solid black; */
-    border-radius: 10px;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: orange;
-    width: 70%;
+  display: flex;
+  padding: 40px;
+  /* border: 2px solid black; */
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: orange;
+  width: 20%;
+  position: fixed;
 }
 
-.inputDiv div{
-    display:flex;
-    flex-direction: column;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.inputDiv div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.input{
-    margin-bottom: 5px;
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 5px;
-    border: 2px solid black;
+.input {
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
 }
 
-.generate{
-    width: 30%;
-    cursor: pointer;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
+.generate {
+  width: 30%;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .building {
-    display: flex;
-    width: 60%;
-    height: fit-content;
-    margin: 30px auto;
-    flex-wrap: wrap;
-    /* align-content: flex-end; */
+  display: flex;
+  width: 60%;
+  height: fit-content;
+  margin: 30px auto;
+  flex-wrap: wrap;
+  /* align-content: flex-end; */
 }
 
 .floor {
-    width: 100%;
-    height: 160px;
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    background: orange;
-    border: 2px solid black;
-    border-radius: 5px;
-    position: relative;
+  width: 100%;
+  height: 160px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  background: orange;
+  border: 2px solid black;
+  border-radius: 5px;
+  position: relative;
 }
 
 .floorName {
-    left: 44%;
-    position: absolute;
-    bottom: 0px;
+  left: 44%;
+  position: absolute;
+  bottom: 0px;
 }
 
 .link {
-    position: absolute;
+  position: absolute;
 }
 
 .buttonsDiv {
-    display: flex;
-    flex-direction: column;
-    width: 7%;
+  display: flex;
+  flex-direction: column;
+  width: 7%;
 }
 
 .btn {
-    cursor: pointer;
-    height: 25px;
-    border-radius: 3px;
+  cursor: pointer;
+  height: 25px;
+  border-radius: 3px;
 }
 
-/* .liftDiv {
+/*.lift_Container {
   width: 100%;
   margin: 10px auto;
   height: 160px;
@@ -158,210 +156,196 @@ body {
     /* bottom: -25px; */
 }
 
-/* .lift_2 {
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    height: 82px;
-    width: 61px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    position: absolute;
-    right: 5%;
-}
-
-.lift_3 {
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    height: 82px;
-    width: 61px;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    position: absolute;
-    right: 20%;
-} */
-
 .liftLeftDoor,
 .liftRightDoor {
-    height: 100%;
-    width: 50%;
-    background: grey;
-    /* position: absolute; */
-    z-index: 30;
-
+  height: 100%;
+  width: 50%;
+  background: grey;
+  /* position: absolute; */
+  z-index: 30;
 }
 
 .liftRightDoor {
-    border-left: 2px solid black;
+  border-left: 2px solid black;
 }
 
 .liftLeftDoor {
-    border-right: 2px solid black;
+  border-right: 2px solid black;
 }
 
-
-
-/*----------------------------------------- Media Querry -----------------------------------------  */
+/*----------------------------------------- Media Query -----------------------------------------  */
 
 @media (max-width: 1400px) {
-    /* .floor {
-    background-color: red;
-  } */
+  .inputDiv {
+    display: flex;
+    width: 47%;
+    margin-top: 60px;
+    position: inherit;
+  }
+  .generate {
+    width: 100%;
+    font-size: 10px;
+  }
 
-    .room {
-        height: 100px;
-        width: 100px;
-    }
-
-    /* .lift {
-        left: 14%;
-    } */
-
-    .inputDiv {
-        display: flex;
-        width: 26%;
-    }
+  .sidebar {
+    align-items: center;
+  }
 }
 
-/* @media (max-width: 1111px) {
-    .lift {
-        left: 14%;
-    }
-} */
-
 @media (max-width: 1150px) {
-    .room {
-        height: 87px;
-        width: 87px;
-    }
+  .room {
+    height: 87px;
+    width: 87px;
+  }
+  .sidebar {
+    align-items: center;
+  }
 
-    /* .lift {
-    left: 15%;
-  } */
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 1000px) {
-    .room {
-        height: 70px;
-        width: 70px;
-    }
+  .lift {
+    height: 62px;
+    width: 41px;
+    left: 17%;
+  }
 
-    .lift {
-        height: 62px;
-        width: 41px;
-        left: 17%;
-    }
+  .sidebar {
+    align-items: center;
+  }
 
-    .balcony {
-        height: 22px;
-    }
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 860px) {
-    .lift {
-        left: 15%;
-    }
+  .lift {
+    left: 15%;
+  }
+
+  .sidebar {
+    align-items: center;
+  }
+
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 800px) {
-    .room {
-        height: 60px;
-        width: 60px;
-    }
+  .btn {
+    width: 38px;
+  }
 
-    .btn {
-        width: 38px;
-    }
+  .lift {
+    left: 16%;
+  }
 
-    .lift {
-        left: 16%;
-    }
+  .sidebar {
+    align-items: center;
+  }
+
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 755px) {
-    .room {
-        width: 55px;
-    }
+  .sidebar {
+    align-items: center;
+  }
+
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 705px) {
-    .lift {
-        height: 44px;
-        width: 36px;
-        left: 16%;
-    }
+  .lift {
+    height: 44px;
+    width: 36px;
+    left: 16%;
+  }
+
+  .sidebar {
+    align-items: center;
+  }
+
+  .inputDiv {
+    position: inherit;
+  }
 }
 
 @media (max-width: 677px) {
-    .room {
-        height: 50px;
-        width: 45px;
-    }
+  .lift {
+    left: 17.5%;
+  }
 
-    .lift {
-        left: 17.5%;
-    }
+  .btn {
+    font-size: 10px;
+  }
 
-    .btn {
-        font-size: 10px;
-    }
+  .sidebar {
+    align-items: center;
+  }
+
+  .inputDiv {
+    position: inherit;
+    align-items: center;
+  }
 }
 
 @media (max-width: 550px) {
-    .room {
-        height: 50px;
-        width: 45px;
-    }
+  .lift {
+    height: 38px;
+    width: 25px;
+    left: 16%;
+  }
 
-    .lift {
-        height: 38px;
-        width: 25px;
-        left: 16%;
-    }
+  .btn {
+    font-size: 7px;
+    font-weight: 700;
+    width: 25px;
+  }
 
-    .btn {
-        font-size: 7px;
-        font-weight: 700;
-        width: 25px;
-    }
+  .inputDiv {
+    left: 34%;
+    position: inherit;
+  }
+  .sidebar_and_content {
+    flex-direction: column;
+  }
 
-    .inputDiv {
-        left: 34%;
-    }
+  .sidebar {
+    width: 100%;
+    align-items: center;
+    height: 100%;
+  }
 }
 
 @media (max-width: 370px) {
-    .room {
-        height: 36px;
-        width: 30px;
-    }
+  .lift {
+    height: 36px;
+    width: 14px;
+    left: 16%;
+  }
 
-    .balcony {
-        height: 10px;
-    }
+  .btn {
+    width: 21px;
+  }
 
-    .lift {
-        height: 36px;
-        width: 14px;
-        left: 16%;
-    }
+  .inputDiv {
+    width: 40%;
+    left: 22%;
+    position: inherit;
+  }
 
-    .btn {
-        width: 21px;
-    }
-
-    .inputDiv {
-        width: 40%;
-        left: 22%;
-    }
-
-    .heading {
-        font-size: 11px;
-        font-weight: 700;
-    }
+  .heading {
+    font-size: 11px;
+    font-weight: 700;
+  }
 }
-
-/* .inputDiv {
-    width: 20%;
-  } */
