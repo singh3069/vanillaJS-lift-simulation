@@ -6,11 +6,7 @@ const building = document.getElementsByClassName("building");
 var liftsArr = [];
 var freeLiftsArr = [];
 
-const generateLifts = (floorId, floor) => {
-  const totalNumberOfLifts = parseInt(lift_input.value);
-  // if (totalNumberOfLifts == "") {
-  //   alert("Enter the number of lifts");
-  // }
+const generateLifts = (floorId, floor, totalNumberOfLifts) => {
   const liftContainer = document.createElement("div");
   liftContainer.classList.add("lift_Container");
   if (floorId == "0") {
@@ -32,9 +28,8 @@ const generateLifts = (floorId, floor) => {
   }
 };
 
-const generateFloors = () => {
+const generateFloors = (totalNumberOfLifts, totalNumberOfFloors) => {
   building[0].innerHTML = "";
-  var totalNumberOfFloors = parseInt(floor_input.value);
   for (let i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
     floor.classList.add("floor");
@@ -59,12 +54,47 @@ const generateFloors = () => {
       : buttonsDiv.append(upButton, downButton);
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
-    generateLifts(floor.id, floor);
+    generateLifts(floor.id, floor, totalNumberOfLifts);
   }
   floor_input.value = "";
 };
 
-generate_floor.addEventListener("click", generateFloors);
+generate_floor.addEventListener("click", () => {
+  const totalNumberOfFloors = parseInt(floor_input.value);
+  const totalNumberOfLifts = parseInt(lift_input.value);
+  const liftsMaxVal = parseInt(lift_input.getAttribute("max"));
+  const liftsMinVal = parseInt(lift_input.getAttribute("min"));
+  const floorsMaxVal = parseInt(floor_input.getAttribute("max"));
+  const floorsMinVal = parseInt(floor_input.getAttribute("min"));
+
+  if (!totalNumberOfFloors && !totalNumberOfLifts) {
+    alert("Please enter number to generate  floor and lift.");
+  } else if (!totalNumberOfFloors) {
+    alert(
+      "Floors input field is empty please  enter a number from 1-15 to generate floors."
+    );
+  } else if (totalNumberOfFloors > floorsMaxVal) {
+    alert(
+      "For now we are only having 15 floors so please enter number from 1 - 15."
+    );
+  } else if (totalNumberOfFloors < floorsMinVal) {
+    alert(
+      "Floors value can not be negative please enter positive number from 1-15."
+    );
+  } else if (!totalNumberOfLifts) {
+    alert(
+      "Lift input field is empty please  enter a number from 1-5 to generate lifts."
+    );
+  } else if (totalNumberOfLifts > liftsMaxVal) {
+    alert("For now we have only  5 lifts so please enter number  from 1-5.");
+  } else if (totalNumberOfLifts < liftsMinVal) {
+    alert(
+      "Lifts number can not be negative please enter positive number  from 1-5."
+    );
+  } else {
+    generateFloors(totalNumberOfLifts, totalNumberOfFloors);
+  }
+});
 
 const lift = document.getElementsByClassName("lift");
 const lift_left_door = document.getElementsByClassName("liftLeftDoor");
