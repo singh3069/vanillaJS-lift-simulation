@@ -35,10 +35,6 @@ const generateLifts = (floorId, floor) => {
 const generateFloors = () => {
   building[0].innerHTML = "";
   var totalNumberOfFloors = parseInt(floor_input.value);
-  // if (totalNumberOfFloors == "") {
-  //   alert("Enter the  number of floors");
-  // }
-
   for (let i = totalNumberOfFloors; i >= 0; i--) {
     const floor = document.createElement("div");
     floor.classList.add("floor");
@@ -64,7 +60,6 @@ const generateFloors = () => {
     floor.appendChild(buttonsDiv);
     building[0].appendChild(floor);
     generateLifts(floor.id, floor);
-    // generate_lift.addEventListener("click", generateLifts(floor.id, floor));
   }
   floor_input.value = "";
 };
@@ -149,5 +144,3 @@ window.addEventListener("click", (event) => {
     liftManager(event);
   }
 });
-
-// we can now each and every lifts position by currentFloor store it in array and then check that which lifts position is nearest to calledFloor
